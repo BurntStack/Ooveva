@@ -99,6 +99,14 @@ export default function Home() {
           <motion.div
             className="hero-backdrop"
             style={{ scale: heroScale }}
+            animate={{ y: [0, -14, 0] }}
+            transition={{
+              y: {
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+            }}
             aria-hidden="true"
           />
           <div className="container hero-inner">

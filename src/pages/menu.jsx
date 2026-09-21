@@ -51,17 +51,16 @@ export default function Menu() {
 
       <motion.div
         className="menu-list"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.08 }}
-        transition={{ staggerChildren: 0.04, delayChildren: 0.16 }}
+        initial={false}
       >
         {items.map((item) => (
           <motion.article
             className="menu-row"
             key={item.id}
+            initial="hidden"
+            animate="visible"
             variants={reveal}
-            transition={transition}
+            transition={{ ...transition, delay: Math.min((item.id % 12) * 0.04, 0.44) }}
           >
             <div className="menu-row-thumb">
               <img

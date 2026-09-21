@@ -231,6 +231,12 @@ img {
   will-change: transform;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-backdrop {
+    animation: none;
+  }
+}
+
 .hero::before {
   position: absolute;
   inset: 0;
