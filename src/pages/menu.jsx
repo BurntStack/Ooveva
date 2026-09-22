@@ -4,6 +4,8 @@ import { menuItems } from "../data/menu";
 import ScrollReveal, { reveal, transition } from "../components/scroll-reveal";
 import TextReveal from "../components/text-reveal";
 
+const featuredItemIds = [19, 10, 12, 8, 32, 6, 11, 24];
+
 export default function Menu() {
   const [category, setCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(12);
@@ -15,7 +17,10 @@ export default function Menu() {
 
   const filteredItems =
     category === "All"
-      ? menuItems
+      ? [
+          ...featuredItemIds.map((id) => menuItems.find((item) => item.id === id)),
+          ...menuItems.filter((item) => !featuredItemIds.includes(item.id)),
+        ]
       : menuItems.filter((item) => item.category === category);
   const items = filteredItems.slice(0, visibleCount);
 
